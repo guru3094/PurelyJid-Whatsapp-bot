@@ -1,0 +1,22 @@
+menu:
+
+  ask_artist: |
+    Welcome to PurelyJid
+
+    Are you a Resin Artist?
+
+    1. Yes
+    2. No
+
+  service_menu: |
+    What service are you looking for?
+
+    1. Varmala Preservation
+    2. Workshop
+
+  place_order: |
+    Do you want to place an order?
+
+    1. Yes
+    2. No
+

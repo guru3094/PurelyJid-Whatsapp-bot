@@ -1,0 +1,20 @@
+2026/03/14-01:09:02.776 49a4 Reusing MANIFEST C:\Users\Guru\PurelyJid-whatsapp-bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/14-01:09:02.777 49a4 Recovering log #103
+2026/03/14-01:09:02.795 49a4 Reusing old log C:\Users\Guru\PurelyJid-whatsapp-bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000103.log 
+2026/03/14-01:10:10.112 49a4 Level-0 table #112: started
+2026/03/14-01:10:10.147 49a4 Level-0 table #112: 1394036 bytes OK
+2026/03/14-01:10:10.149 49a4 Delete type=0 #103
+2026/03/14-01:10:10.858 1eb4 Compacting 1@1 + 5@2 files
+2026/03/14-01:10:10.930 1eb4 Generated table #113@1: 60987 keys, 2230713 bytes
+2026/03/14-01:10:10.960 1eb4 Generated table #114@1: 12141 keys, 2160737 bytes
+2026/03/14-01:10:11.001 1eb4 Generated table #115@1: 19685 keys, 2186573 bytes
+2026/03/14-01:10:11.072 1eb4 Generated table #116@1: 82357 keys, 2226960 bytes
+2026/03/14-01:10:11.104 1eb4 Generated table #117@1: 20250 keys, 567418 bytes
+2026/03/14-01:10:11.105 1eb4 Compacted 1@1 + 5@2 files => 9372401 bytes
+2026/03/14-01:10:11.106 1eb4 compacted to: files[ 0 0 5 0 0 0 0 ]
+2026/03/14-01:10:11.107 1eb4 Delete type=2 #105
+2026/03/14-01:10:11.107 1eb4 Delete type=2 #106
+2026/03/14-01:10:11.107 1eb4 Delete type=2 #107
+2026/03/14-01:10:11.107 1eb4 Delete type=2 #108
+2026/03/14-01:10:11.108 1eb4 Delete type=2 #109
+2026/03/14-01:10:11.108 1eb4 Delete type=2 #112
