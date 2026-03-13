@@ -5,6 +5,9 @@ varmala_catalogue:
 
   - name: Premium Varmala Frame
     price: 5500
+    
+  - name: Thin Frame
+    Price: 2000
 
 
 workshop_catalogue:
