@@ -1,20 +1,4 @@
 varmala_catalogue:
 
-  - name: Classic Varmala Frame
-    price: 3500
-
-  - name: Premium Varmala Frame
-    price: 5500
-    
-  - name: Thin Frame
-    Price: 2000
-
-
-workshop_catalogue:
-
-  - name: Resin Beginner Workshop
-    price: 1999
-
-  - name: Resin Advanced Workshop
-    price: 3999
+  - Link: https://drive.google.com/drive/folders/19u1QJt3NIrFFbfxh0qnsoH3xhOpsqDX7?usp=drive_link
 
