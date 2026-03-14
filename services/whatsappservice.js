@@ -1,174 +1,49 @@
-const { Client, LocalAuth } = require("whatsapp-web.js");
-const qrcode = require("qrcode-terminal");
+const { Client, LocalAuth } = require("whatsapp-web.js")
+const qrcode = require("qrcode-terminal")
+const { processMessage } = require("./botService")
 
-const { loadCatalogue, getMenu } = require("./catalogueService");
+function startWhatsapp(){
 
-let client;
+const client = new Client({
 
-const userState = {};
-const botDisabled = {};
+authStrategy: new LocalAuth(),
 
-function initWhatsApp() {
+puppeteer:{
+args:['--no-sandbox','--disable-setuid-sandbox']
+}
 
-  client = new Client({
-    authStrategy: new LocalAuth()
-  });
+})
 
-  client.on("qr", qr => {
-    console.log("Scan QR with WhatsApp:");
-    qrcode.generate(qr, { small: true });
-  });
+client.on("qr",(qr)=>{
 
-  client.on("ready", () => {
-    console.log("WhatsApp bot ready");
-  });
+// Generate scannable QR
+qrcode.generate(qr,{small:true})
 
-  client.on("message", async msg => {
+})
 
-    const text = msg.body.trim().toLowerCase();
-    const user = msg.from;
+client.on("ready",()=>{
+console.log("✅ WhatsApp Bot Ready")
+})
 
-    if (botDisabled[user]) return;
+client.on("message",async message=>{
 
-    const menu = getMenu();
-    const catalogue = loadCatalogue();
+// Ignore Status
+if(message.from==="status@broadcast"){
+return
+}
 
-    /* Greeting */
+// Ignore Groups
+if(message.from.includes("@g.us")){
+return
+}
 
-    if (text === "hi" || text === "hello") {
+await processMessage(client,message)
 
-      userState[user] = "ASK_ARTIST";
-      await msg.reply(menu.ask_artist);
+})
 
-      return;
-    }
-
-    /* Step 1 : Are you a resin artist */
-
-    if (userState[user] === "ASK_ARTIST") {
-
-      if (text === "1" || text === "yes") {
-
-        const owner = process.env.OWNER_NUMBER + "@c.us";
-
-        await msg.reply("Our team will contact you shortly.");
-
-        await client.sendMessage(
-          owner,
-          `Resin Artist reached out.\nCustomer: ${user}`
-        );
-
-        botDisabled[user] = true;   // stops bot ONLY for that user
-        return;
-      }
-
-      if (text === "2" || text === "no") {
-
-        userState[user] = "SERVICE_MENU";
-
-        await msg.reply(menu.service_menu + "\n\n0️⃣ Back");
-
-        return;
-      }
-
-    }
-
-    /* Step 2 : Service menu */
-
-    if (userState[user] === "SERVICE_MENU") {
-
-      if (text === "0") {
-
-        userState[user] = "ASK_ARTIST";
-        await msg.reply(menu.ask_artist);
-
-        return;
-      }
-
-      if (text === "1") {
-
-        let message = "Varmala Preservation Catalogue\n\n";
-
-        catalogue.varmala_catalogue.forEach((item, index) => {
-          message += `${index + 1}. ${item.name} - ₹${item.price}\n`;
-        });
-
-        message += "\n\n0️⃣ Back";
-
-        await msg.reply(message);
-
-        userState[user] = "ORDER_PROMPT";
-
-        await msg.reply(menu.place_order + "\n\n0️⃣ Back");
-
-        return;
-      }
-
-      if (text === "2") {
-
-        let message = "Workshop Catalogue\n\n";
-
-        catalogue.workshop_catalogue.forEach((item, index) => {
-          message += `${index + 1}. ${item.name} - ₹${item.price}\n`;
-        });
-
-        message += "\n\n0️⃣ Back";
-
-        await msg.reply(message);
-
-        userState[user] = "ORDER_PROMPT";
-
-        await msg.reply(menu.place_order + "\n\n0️⃣ Back");
-
-        return;
-      }
-
-    }
-
-    /* Step 3 : Order prompt */
-
-    if (userState[user] === "ORDER_PROMPT") {
-
-      if (text === "0") {
-
-        userState[user] = "SERVICE_MENU";
-        await msg.reply(menu.service_menu + "\n\n0️⃣ Back");
-
-        return;
-      }
-
-      if (text === "1" || text === "yes") {
-
-        const owner = process.env.OWNER_NUMBER + "@c.us";
-
-        await msg.reply("Thank you. Our team will contact you shortly.");
-
-        await client.sendMessage(
-          owner,
-          `New order request received.\nCustomer: ${user}`
-        );
-
-        botDisabled[user] = true;  // stop only this customer
-
-        return;
-      }
-
-      if (text === "2" || text === "no") {
-
-        await msg.reply("Thank you for contacting PurelyJid.");
-
-        botDisabled[user] = true;
-
-        return;
-      }
-
-    }
-
-  });
-
-  client.initialize();
+client.initialize()
 
 }
 
-module.exports = { initWhatsApp };
+module.exports = startWhatsapp
 
