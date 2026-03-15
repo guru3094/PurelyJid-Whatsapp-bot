@@ -21,7 +21,7 @@ await client.sendMessage(number,
 
 `Welcome to PurelyJid
 
-Please choose an option:
+Please choose an option number:
 
 1️⃣ Inquiry for Varmala / Flower Preservation
 2️⃣ Resin Artist Raw Materials
@@ -41,7 +41,7 @@ if (text === "1") {
 
 await client.sendMessage(number,
 
-`Select Preservation Type
+`Select an option number:
 
 1️⃣ Wooden Frame
 2️⃣ Luxury Tabletop
@@ -59,7 +59,7 @@ if (text === "2") {
 
 await client.sendMessage(number,
 
-`Select Raw Material Category
+`Select an option number:
 
 1️⃣ Silicone Moulds
 2️⃣ Wooden Frames
@@ -79,7 +79,9 @@ if (text === "3") {
 await client.sendMessage(number,
 `📍 Our Store Location
 
-${config.LINKS.LOCATION}`
+${config.LINKS.LOCATION}
+
+0️⃣ Back`
 )
 
 scheduleInterest(client, number)
@@ -91,7 +93,9 @@ if (text === "4") {
 await client.sendMessage(number,
 `📚 Offline Course Details
 
-${config.LINKS.COURSE}`
+${config.LINKS.COURSE}
+
+0️⃣ Back`
 )
 
 scheduleInterest(client, number)
