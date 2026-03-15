@@ -144,14 +144,9 @@ if(text.toLowerCase()==="yes"){
 await client.sendMessage(number,
 "Thankyou for showing interest. Our team will get in touch with you shortly.")
 
-const customerNumber = number.replace("@c.us","")
-
 await client.sendMessage(
 config.OWNER_NUMBER,
-`Customer has shown interest in our services.
-
-Customer Number:
-https://wa.me/${customerNumber}`
+"Customer has shown interest in our services."
 )
 
 resetSession(number)
