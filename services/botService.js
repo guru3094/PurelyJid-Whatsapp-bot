@@ -84,7 +84,7 @@ ${config.LINKS.LOCATION}
 0️⃣ Back`
 )
 
-scheduleInterest(client, number)
+session.stage = "LOCATION_MENU"
 return
 }
 
@@ -98,7 +98,7 @@ ${config.LINKS.COURSE}
 0️⃣ Back`
 )
 
-scheduleInterest(client, number)
+session.stage = "COURSE_MENU"
 return
 }
 
@@ -145,6 +145,35 @@ ${config.LINKS.RAW_MATERIAL}`
 scheduleInterest(client, number)
 return
 }
+
+/* ---------------- LOCATION MENU ---------------- */
+
+if (session.stage === "LOCATION_MENU") {
+
+if (text === "0") {
+
+session.stage = "MAIN_MENU"
+return processMessage(client, message)
+}
+
+scheduleInterest(client, number)
+return
+}
+
+/* ---------------- COURSE MENU ---------------- */
+
+if (session.stage === "COURSE_MENU") {
+
+if (text === "0") {
+
+session.stage = "MAIN_MENU"
+return processMessage(client, message)
+}
+
+scheduleInterest(client, number)
+return
+}
+
 
 /* ---------------- INTEREST STAGE ---------------- */
 
