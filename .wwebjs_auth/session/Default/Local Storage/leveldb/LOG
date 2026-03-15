@@ -1,3 +1,6 @@
-2026/03/14-23:50:31.308 3704 Reusing MANIFEST C:\Users\Guru\PurelyJid-Whatsapp-bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2026/03/14-23:50:31.320 3704 Recovering log #6
-2026/03/14-23:50:31.330 3704 Reusing old log C:\Users\Guru\PurelyJid-Whatsapp-bot\.wwebjs_auth\session\Default\Local Storage\leveldb/000006.log 
+2026/03/15-12:55:21.054 6464 Reusing MANIFEST C:\Users\Guru\PurelyJid-Whatsapp-bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2026/03/15-12:55:21.062 6464 Recovering log #6
+2026/03/15-12:55:21.148 6464 Reusing old log C:\Users\Guru\PurelyJid-Whatsapp-bot\.wwebjs_auth\session\Default\Local Storage\leveldb/000006.log 
+2026/03/15-12:57:29.008 4d80 Level-0 table #10: started
+2026/03/15-12:57:29.016 4d80 Level-0 table #10: 19663 bytes OK
+2026/03/15-12:57:29.019 4d80 Delete type=0 #6
